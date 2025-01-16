@@ -21,10 +21,12 @@ typedef struct Stack{
 
 node *aux_pointer = NULL;
 
+
 struct Stack* create_stack();
 void insert_node(stack *Stack);
 void imprimir(stack *Stack);
-void removed(stack *Stack);
+void removedOneNode(stack *Stack);
+void removedAllNodes(stack *Stack);
 
 
 int main(int argc, char *argv[])
@@ -37,7 +39,11 @@ int main(int argc, char *argv[])
 
 	imprimir(Stack);
 
-	removed(Stack);
+	removedOneNode(Stack);
+
+	imprimir(Stack);
+
+	removedAllNodes(Stack);
 
 	imprimir(Stack);
 
@@ -92,18 +98,35 @@ void imprimir(stack *Stack){
 	}
 }
 
-void removed(stack *Stack){
+void removedOneNode(stack *Stack){
 	node *aux_pointer = Stack -> top_node;
 
 	if(aux_pointer->prox == NULL){
 		printf("Empty List \n");
 	}
 	else{
-		aux_pointer = Stack ->top_node;
 		printf("remove node: %d \n", aux_pointer->valor);
 		Stack->top_node = Stack->top_node->prox;
 		free(aux_pointer);
 	}
 }
 
+// FIXME: This Function is not work.
+void removedAllNodes(stack *Stack){
 
+	if(Stack->top_node == NULL){
+		printf("Empty List \n");
+	}
+	else{
+		node *aux_pointer = Stack -> top_node;
+		do {	
+			printf("remove node: %d \n", aux_pointer->valor);
+			Stack->top_node = Stack-> top_node-> prox;
+
+			free(aux_pointer);
+			aux_pointer = Stack->top_node;
+
+		}while (aux_pointer != NULL);
+		printf("List Empty");
+	}
+}
