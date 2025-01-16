@@ -24,6 +24,8 @@ node *aux_pointer = NULL;
 struct Stack* create_stack();
 void insert_node(stack *Stack);
 void imprimir(stack *Stack);
+void removed(stack *Stack);
+
 
 int main(int argc, char *argv[])
 {
@@ -34,6 +36,11 @@ int main(int argc, char *argv[])
 	insert_node(Stack);
 
 	imprimir(Stack);
+
+	removed(Stack);
+
+	imprimir(Stack);
+
 
 	return 0;
 }
@@ -62,7 +69,7 @@ struct Stack* create_stack(){
 	stack *Pilha = malloc(sizeof(stack));
 
 	if (Pilha == NULL){
-		printf("Error, memory allocation error");
+		printf("Error, memory allocation error \n");
 		return Pilha;
 	}
 	Pilha -> top_node = NULL;
@@ -85,5 +92,18 @@ void imprimir(stack *Stack){
 	}
 }
 
+void removed(stack *Stack){
+	node *aux_pointer = Stack -> top_node;
+
+	if(aux_pointer->prox == NULL){
+		printf("Empty List \n");
+	}
+	else{
+		aux_pointer = Stack ->top_node;
+		printf("remove node: %d \n", aux_pointer->valor);
+		Stack->top_node = Stack->top_node->prox;
+		free(aux_pointer);
+	}
+}
 
 
