@@ -19,9 +19,10 @@ typedef struct Stack{
 	int nodesize;
 }stack;
 
+//auxiliary pointer for print and remove functions.
 node *aux_pointer = NULL;
 
-
+//Function Prototype.
 struct Stack* create_stack();
 void insert_node(stack *Stack);
 void printNode(stack *Stack);
@@ -50,7 +51,7 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
+// TODO: Create a Function capable of adding elements to a stack.
 void insert_node(stack *Stack){
 	
 	//allocation and validation.
@@ -71,7 +72,7 @@ void insert_node(stack *Stack){
 
 }
 
-//Alocation memory for stack node.
+// TODO: Alocation memory for stack node.
 struct Stack* create_stack(){
 	stack *Pilha = malloc(sizeof(stack));
 
@@ -85,6 +86,7 @@ struct Stack* create_stack(){
 	return Pilha;
 }
 
+// TODO: Printing all values in the stack.
 void printNode(stack *Stack){
 	node *aux_pointer = Stack -> top_node;
 
@@ -99,6 +101,7 @@ void printNode(stack *Stack){
 	}
 }
 
+// TODO: Removing the top element from the stack.
 void removedOneNode(stack *Stack){
 	node *aux_pointer = Stack -> top_node;
 
