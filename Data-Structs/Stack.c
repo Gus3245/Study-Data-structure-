@@ -24,7 +24,7 @@ node *aux_pointer = NULL;
 
 struct Stack* create_stack();
 void insert_node(stack *Stack);
-void imprimir(stack *Stack);
+void printNode(stack *Stack);
 void removedOneNode(stack *Stack);
 void removedAllNodes(stack *Stack);
 
@@ -37,15 +37,15 @@ int main(int argc, char *argv[])
 	insert_node(Stack);
 	insert_node(Stack);
 
-	imprimir(Stack);
+	printNode(Stack);
 
 	removedOneNode(Stack);
 
-	imprimir(Stack);
+	printNode(Stack);
 
 	removedAllNodes(Stack);
 
-	imprimir(Stack);
+	printNode(Stack);
 
 
 	return 0;
@@ -58,6 +58,7 @@ void insert_node(stack *Stack){
 
 	if (node_element == NULL){
 		printf("Error, memory allocation error");
+		exit(1);
 	}
 
 	printf("Digite o valor do elemento na pilha: ");
@@ -84,7 +85,7 @@ struct Stack* create_stack(){
 	return Pilha;
 }
 
-void imprimir(stack *Stack){
+void printNode(stack *Stack){
 	node *aux_pointer = Stack -> top_node;
 
 	if(aux_pointer->prox == NULL){
@@ -111,22 +112,18 @@ void removedOneNode(stack *Stack){
 	}
 }
 
-// FIXME: This Function is not work.
 void removedAllNodes(stack *Stack){
 
 	if(Stack->top_node == NULL){
 		printf("Empty List \n");
 	}
 	else{
-		node *aux_pointer = Stack -> top_node;
-		do {	
+		do {
+			node *aux_pointer = Stack ->top_node;
+
 			printf("remove node: %d \n", aux_pointer->valor);
-			Stack->top_node = Stack-> top_node-> prox;
-
+			Stack->top_node = aux_pointer-> prox;
 			free(aux_pointer);
-			aux_pointer = Stack->top_node;
-
-		}while (aux_pointer != NULL);
-		printf("List Empty");
+		} while (Stack->top_node->prox != NULL);
 	}
 }
