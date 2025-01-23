@@ -21,10 +21,10 @@ typedef struct Stack{
 
 //auxiliary pointer for print and remove functions.
 node *aux_pointer = NULL;
-
+node *node_element = NULL;
 //Function Prototype.
 struct Stack* create_stack();
-void insert_node(stack *Stack);
+void insert_node(stack *Stack, node *node_element);
 void printNode(stack *Stack);
 void removedOneNode(stack *Stack);
 void removedAllNodes(stack *Stack);
@@ -34,9 +34,9 @@ int main(int argc, char *argv[])
 {
 	//Create stack.	
 	stack *Stack = create_stack();
-	insert_node(Stack);
-	insert_node(Stack);
-	insert_node(Stack);
+	insert_node(Stack, node_element);
+	insert_node(Stack, node_element);
+	insert_node(Stack, node_element);
 
 	printNode(Stack);
 
@@ -52,10 +52,9 @@ int main(int argc, char *argv[])
 	return 0;
 }
 // TODO: Create a Function capable of adding elements to a stack.
-void insert_node(stack *Stack){
+void insert_node(stack *Stack, node *node_element){
 	
 	//allocation and validation.
-	node *node_element = malloc(sizeof(node));
 
 	if (node_element == NULL){
 		printf("Error, memory allocation error");
@@ -115,6 +114,7 @@ void removedOneNode(stack *Stack){
 	}
 }
 
+// TODO: Removing all elements from the stack.
 void removedAllNodes(stack *Stack){
 
 	if(Stack->top_node == NULL){
