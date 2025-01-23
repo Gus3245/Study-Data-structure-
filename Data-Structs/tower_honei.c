@@ -63,6 +63,11 @@ void print_list(stack *Source){
 	}while (aux != NULL);
 }
 
+void move_disk(stack *origin, stack *destination){
+	add_to_stack(destination, remove_in_stack(origin));
+	
+}
+
 int main(int argc, char *argv[])
 {
 }
