@@ -1,4 +1,3 @@
-#include <cstddef>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -45,6 +44,10 @@ int remove_in_stack(stack *Source){
 
 		Source-> size--;
 		return returnvalue;
+	}
+	else{
+		printf("Empty List");
+		return -1;
 	}
 }
 
