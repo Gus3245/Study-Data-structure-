@@ -68,6 +68,17 @@ void move_disk(stack *origin, stack *destination){
 	
 }
 
+void tower_of_honei(int disks, stack *left_stack, stack *mid_stack, stack *right_stack){
+	if(disks == 1){
+		move_disk(left_stack, right_stack);
+	}
+	else{
+		tower_of_honei(disks - 1, left_stack, mid_stack, right_stack);
+		move_disk(left_stack,right_stack);
+		tower_of_honei(disks - 1,mid_stack, right_stack, left_stack);
+	}
+}
+
 int main(int argc, char *argv[])
 {
 }
