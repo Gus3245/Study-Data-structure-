@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -17,19 +18,41 @@ typedef struct Queue{
 	struct Node *aux_node;
 }queue;
 
-void insert_element(int value, queue *Source);
+int insert_element(int value, queue *Source);
 void print_allElements(queue *Source);
 int remove_element(queue *Source);
 void remove_allElements(queue *Source);
+queue* create_queue();
 
 int main(int argc, char *argv[])
 {
-	
+	queue *queue_list = create_queue();	
+}
+
+queue* create_queue(){
+
+	queue *Fila = malloc(sizeof(queue));
+	if(Fila == NULL){
+		printf("Error, Alocation Memory fault");
+		return Fila;
+	}
+
+	Fila->end_node = NULL;
+	Fila->start_node = NULL;
+	return Fila;
 }
 
 //  TODO: Implementing insert elements function to queue.
-void insert_element(int value, queue *Source){
+int insert_element(int value, queue *Source){
+	
+	node *temporary_node = malloc(sizeof(node));
+	if(temporary_node == NULL){
+		printf("Error, Alocation Memory fault");
+		return -1;
+	}
 
+	temporary_node->prox = NULL;
+	temporary_node->value = value;
 }
 
 //  TODO: Implementing remove one element function to queue.
