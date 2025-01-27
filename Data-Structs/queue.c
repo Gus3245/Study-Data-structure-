@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*Queue is a FIFO (First In First Out) type structure, that is, 
  * the first element inserted will be the first to be removed. 
@@ -87,7 +88,17 @@ int remove_element(queue *Source){
 //  TODO: Print all elements in queue.
 
 void print_allElements(queue *Source){
-
+	if(Source->start_node == NULL){
+		printf("Empty List");
+	}
+	
+	else {
+		aux_temporary = Source->start_node;
+		do {
+			printf("valor: %d \n", aux_temporary->value);
+			aux_temporary = aux_temporary->prox;
+		} while (aux_temporary->prox != NULL);
+	}
 }
 
 //  TODO: Empty the past list.
