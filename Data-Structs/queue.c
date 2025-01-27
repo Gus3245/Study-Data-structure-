@@ -62,15 +62,30 @@ void insert_element(int value, queue *Source){
 		Source->end_node->prox = temporary_node;
 		Source->end_node = temporary_node;
 	}
+	printf("Operation succesfull");
 	Source->size++;
 }
 
 //  TODO: Implementing remove one element function to queue.
 int remove_element(queue *Source){
-	return 1;
+	
+	if(Source->start_node == NULL){
+		printf("Empty List");
+		return -1;
+	}
+
+	else{
+		aux_temporary = Source->start_node;
+		printf("Value: %d \n", aux_temporary->value);
+		Source->start_node = Source->start_node->prox;
+
+		return aux_temporary->value;
+		free(aux_temporary);
+	}
+}
 
 //  TODO: Print all elements in queue.
-}
+
 void print_allElements(queue *Source){
 
 }
