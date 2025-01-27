@@ -82,30 +82,30 @@ void tower(int disk, pilha *source, pilha *intermediate, pilha *destination){
 int main(){
 	int disk = 3;
 
-	struct pilha *pilha1 = malloc(sizeof(pilha));
-	struct pilha *pilha2 = malloc(sizeof(pilha));
-	struct pilha *pilha3 = malloc(sizeof(pilha));
-	add(1, pilha1);
-	add(2, pilha1);
-	add(3, pilha1);
+	struct pilha *Portal_do_Vórtice_Temporal  = malloc(sizeof(pilha));
+	struct pilha *Portal_da_Criação_Eterna = malloc(sizeof(pilha));
+	struct pilha *Portal_do_Infinito_Abissal  = malloc(sizeof(pilha));
+	add(1, Portal_do_Vórtice_Temporal);
+	add(2, Portal_do_Vórtice_Temporal);
+	add(3, Portal_do_Vórtice_Temporal);
 	
 	printf("Pilha 1 \n");
-	imprimir(pilha1);
+	imprimir(Portal_do_Vórtice_Temporal);
 
 	printf("Pilha 2 \n");
-	imprimir(pilha2);
+	imprimir(Portal_da_Criação_Eterna);
 
 	printf("Pilha 3 \n");
-	imprimir(pilha3);
+	imprimir(Portal_do_Infinito_Abissal);
 
-	tower(disk, pilha1, pilha2, pilha3);
+	tower(disk, Portal_do_Vórtice_Temporal, Portal_da_Criação_Eterna, Portal_do_Infinito_Abissal);
 
 	printf("Pilha 1 \n");
-	imprimir(pilha1);
+	imprimir(Portal_do_Vórtice_Temporal);
 
 	printf("Pilha 2 \n");
-	imprimir(pilha2);
+	imprimir(Portal_da_Criação_Eterna);
 
 	printf("Pilha 3 \n");
-	imprimir(pilha3);
+	imprimir(Portal_do_Infinito_Abissal);
 } 

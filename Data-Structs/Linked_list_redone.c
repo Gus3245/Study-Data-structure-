@@ -17,6 +17,11 @@ typedef struct Node{
 	struct Node *ant;
 }node;
 
+typedef struct LinkedList{
+	struct Node *start_node;
+	struct Node *end_node;
+}List;
+
 node *start_node = NULL;
 node *end_node = NULL;
 
@@ -24,19 +29,15 @@ node *node_aux;
 
 int main(int argc, char *argv[])
 {
-	insert_elements_list();
-	insert_elements_list();
-
-	print_list();
 }
 
 // insert_elements_list() -Inserindo valores na lista de nodes.
-void insert_elements_list(){
-
+void insert_elements_list(List *SourceList){
+	
 	node *temporary_node = malloc(sizeof(node));
 	if (temporary_node == NULL){
 		printf("Error, Alocation Memory");
-		return;
+		return ;
 	}
 
 	printf("Insert value in temporary_node valor: ");
@@ -45,8 +46,8 @@ void insert_elements_list(){
 	temporary_node->prox = NULL;
 	temporary_node->ant = NULL;
 
-	if(start_node == NULL){
-		start_node = temporary_node;	
+	if(SourceList-> start_node == NULL){
+		SourceList-> start_node = temporary_node;	
 		end_node = temporary_node;
 	
 	}else if(temporary_node->valor <= start_node->valor){
