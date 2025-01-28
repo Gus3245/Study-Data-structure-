@@ -22,20 +22,23 @@ struct Node *aux_temporary;
 
 void insert_element(int value, queue *Source);
 void print_allElements(queue *Source);
-int remove_element(queue *Source);
+void remove_element(queue *Source);
 void remove_allElements(queue *Source);
 queue* create_queue();
 
 int main(int argc, char *argv[])
 {
 	queue *queue_list = create_queue();	
+	insert_element(4, queue_list);
+	insert_element(5, queue_list);
+	insert_element(6, queue_list);
 }
 
 queue* create_queue(){
 
 	queue *Fila = malloc(sizeof(queue));
 	if(Fila == NULL){
-		printf("Error, Alocation Memory fault");
+		printf("Error, Alocation Memory fault \n");
 		return Fila;
 	}
 
@@ -58,29 +61,27 @@ void insert_element(int value, queue *Source){
 	if(Source->start_node == NULL){
 		Source->start_node = temporary_node;
 		Source->end_node = temporary_node;
+		
 	}
 	else{
 		Source->end_node->prox = temporary_node;
 		Source->end_node = temporary_node;
 	}
-	printf("Operation succesfull");
+	printf("Operation succesfull \n");
 	Source->size++;
 }
 
 //  TODO: Implementing remove one element function to queue.
-int remove_element(queue *Source){
-	
-	if(Source->start_node == NULL){
-		printf("Empty List");
-		return -1;
-	}
+void remove_element(queue *Source){
 
+	if(Source->start_node == NULL){
+		printf("Queue is empty");
+		return;
+	}
+	
 	else{
 		aux_temporary = Source->start_node;
-		printf("Value: %d \n", aux_temporary->value);
 		Source->start_node = Source->start_node->prox;
-
-		return aux_temporary->value;
 		free(aux_temporary);
 	}
 }
@@ -88,22 +89,34 @@ int remove_element(queue *Source){
 //  TODO: Print all elements in queue.
 
 void print_allElements(queue *Source){
+
 	if(Source->start_node == NULL){
 		printf("Empty List");
+		return;
 	}
 	
 	else {
 		aux_temporary = Source->start_node;
 		do {
-			printf("valor: %d \n", aux_temporary->value);
+			printf("valor: %d -> ", aux_temporary->value);
 			aux_temporary = aux_temporary->prox;
-		} while (aux_temporary->prox != NULL);
+		} while (aux_temporary != NULL);
 	}
 }
 
 //  TODO: Empty the past list.
 void remove_allElements(queue *Source){
-
+	if(Source->start_node == NULL){
+		printf("Empty List");
+	}
+	
+	else {
+		do {
+			aux_temporary = Source->start_node;
+			printf("Remove Value: %d -> ", aux_temporary->value);
+			Source->start_node = Source->start_node->prox;
+			free(aux_temporary);
+		} while (Source->start_node != NULL);
+	}
 }
-
 

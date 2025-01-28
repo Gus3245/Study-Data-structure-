@@ -47,7 +47,7 @@ void insert_elements_list(List *SourceList){
 	temporary_node->ant = NULL;
 
 	if(SourceList-> start_node == NULL){
-		SourceList-> start_node = temporary_node;	
+		start_node = temporary_node;	
 		end_node = temporary_node;
 	
 	}else if(temporary_node->valor <= start_node->valor){
