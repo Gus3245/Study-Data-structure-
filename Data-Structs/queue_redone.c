@@ -12,7 +12,6 @@
 typedef struct Node{
 	int value;
 	struct Node *prox_node;
-	struct Node *ant_node;
 }node;
 
 typedef struct Queue{
@@ -46,7 +45,6 @@ void enqueue(int input_value, queue *Source){
 	}
 	else {
 		temporary_node->value = input_value;
-		temporary_node->ant_node = NULL;
 		temporary_node->prox_node = NULL;
 	}
 	
@@ -56,14 +54,26 @@ void enqueue(int input_value, queue *Source){
 	}
 	else {
 		Source->head->prox_node = temporary_node;
-		temporary_node->ant_node = Source->head;
 		Source->head = temporary_node;
 	}
 	Source->queue_size++;
 }
-// TODO: Dequeue or deletion function. (return the delete element) 
+// TODO: Dequeue or deletion function. (return the delete element).
 int dequeue(queue *Source){
-	return 0;
+
+	if (Source == NULL){
+		printf("The Queue is already empty");
+		return -1;
+	}
+	
+	else {
+		Source->aux_temporary = Source->rear;
+		Source->rear = Source->rear->prox_node;
+
+		return Source->aux_temporary->value;
+		free(Source->aux_temporary);
+	}
+	
 }
 // TODO: Peek: returns the frontelement of the queue.
 int peek(queue *Source){
@@ -81,5 +91,5 @@ int main(int argc, char *argv[])
 	enqueue(10, Fila);
 	enqueue(11, Fila);
 	enqueue(12, Fila);
-
+	dequeue(Fila);
 }
