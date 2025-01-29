@@ -21,6 +21,7 @@ typedef struct Queue{
 	struct Node *aux_temporary;
 }queue;
 
+// TODO: create return function for create alocation queue.
 queue* create_queue(){
 	
 	queue *Queue = malloc(sizeof(queue));
@@ -81,6 +82,10 @@ int peek(queue *Source){
 }
 // TODO: Empty function for remove all elements in the data struct.
 void remove_all_elements(queue *Source){
+
+}
+//TODO: pritn all elements in the queue list.
+void print_queue(queue *Source){
 
 }
 
