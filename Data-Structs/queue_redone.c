@@ -49,13 +49,13 @@ void enqueue(int input_value, queue *Source){
 		temporary_node->prox_node = NULL;
 	}
 	
-	if(Source->rear == NULL){
+	if(Source->head == NULL){
 		Source->rear = temporary_node;
 		Source->head = temporary_node;
 	}
 	else {
-		Source->head->prox_node = temporary_node;
-		Source->head = temporary_node;
+		Source->rear->prox_node = temporary_node;
+		Source->rear = temporary_node;
 	}
 	Source->queue_size++;
 }
@@ -68,8 +68,8 @@ int dequeue(queue *Source){
 	}
 	
 	else {
-		Source->aux_temporary = Source->rear;
-		Source->rear = Source->rear->prox_node;
+		Source->aux_temporary = Source->head;
+		Source->head = Source->head->prox_node;
 
 		return Source->aux_temporary->value;
 		free(Source->aux_temporary);
@@ -84,9 +84,15 @@ int peek(queue *Source){
 void remove_all_elements(queue *Source){
 
 }
-//TODO: pritn all elements in the queue list.
+//TODO: print all elements in the queue list.
 void print_queue(queue *Source){
-
+	
+	if (Source == NULL){
+		printf("List empty");
+	}
+	else {
+		Source->aux_temporary = Source->head;
+	}
 }
 
 
