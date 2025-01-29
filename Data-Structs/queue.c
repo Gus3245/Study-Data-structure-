@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 	insert_element(4, queue_list);
 	insert_element(5, queue_list);
 	insert_element(6, queue_list);
+	print_allElements(queue_list);
 }
 
 queue* create_queue(){

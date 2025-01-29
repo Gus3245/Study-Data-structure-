@@ -32,6 +32,7 @@ queue* create_queue(){
 	else {
 		Queue->head = NULL;
 		Queue->rear = NULL;
+		Queue->aux_temporary = NULL;
 		Queue->queue_size = 0;
 	}
 	return Queue;
@@ -62,7 +63,7 @@ void enqueue(int input_value, queue *Source){
 // TODO: Dequeue or deletion function. (return the delete element).
 int dequeue(queue *Source){
 
-	if (Source == NULL){
+	if (Source->head == NULL){
 		printf("The Queue is already empty");
 		return -1;
 	}
@@ -87,11 +88,16 @@ void remove_all_elements(queue *Source){
 //TODO: print all elements in the queue list.
 void print_queue(queue *Source){
 	
-	if (Source == NULL){
+	if (Source->head == NULL){
 		printf("List empty");
+		return;
 	}
 	else {
 		Source->aux_temporary = Source->head;
+		do {
+			printf("%d <-- ", Source-> aux_temporary-> value);
+			Source->aux_temporary = Source-> aux_temporary-> prox_node;
+		} while (Source->aux_temporary != NULL);
 	}
 }
 
@@ -102,5 +108,7 @@ int main(int argc, char *argv[])
 	enqueue(10, Fila);
 	enqueue(11, Fila);
 	enqueue(12, Fila);
+	enqueue(12, Fila);
 	dequeue(Fila);
+	print_queue(Fila);
 }
