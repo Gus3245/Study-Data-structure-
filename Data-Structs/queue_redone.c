@@ -79,7 +79,15 @@ int dequeue(queue *Source){
 }
 // TODO: Peek: returns the front element of the queue.
 int peek(queue *Source){
-	return 0;
+	
+	if(Source->head == NULL){
+		printf("There nothing in the head of queue \n");
+		return 0;
+	}
+
+	printf("\nValue in the queue head: %d \n", Source->head->value);
+	return Source->head->value;
+
 }
 // TODO: Empty function for remove all elements in the data struct.
 void remove_all_elements(queue *Source){
@@ -114,6 +122,7 @@ void print_queue(queue *Source){
 		} while (Source->aux_temporary != NULL);
 	}
 	puts("");
+	printf("The Queue Size: %d", Source->queue_size);
 }
 
 
@@ -126,5 +135,6 @@ int main(int argc, char *argv[])
 	enqueue(12, Fila);
 	print_queue(Fila);
 
-	remove_all_elements(Fila);
+
+	peek(Fila);
 }
