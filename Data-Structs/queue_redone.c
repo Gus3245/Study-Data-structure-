@@ -21,6 +21,15 @@ typedef struct Queue{
 	struct Node *aux_temporary;
 }queue;
 
+// TODO: create a function that returns error when the head pointer is null.
+int SourceHead_validation(queue *Source){
+	
+	if (Source->head == NULL){
+		return -1;
+	}
+	return 1;
+}
+
 // TODO: create return function for create alocation queue.
 queue* create_queue(){
 	
@@ -63,7 +72,7 @@ void enqueue(int input_value, queue *Source){
 // TODO: Dequeue or deletion function. (return the delete element).
 int dequeue(queue *Source){
 
-	if (Source->head == NULL){
+	if (SourceHead_validation(Source) == -1){
 		printf("The Queue is already empty");
 		return -1;
 	}
@@ -80,7 +89,7 @@ int dequeue(queue *Source){
 // TODO: Peek: returns the front element of the queue.
 int peek(queue *Source){
 	
-	if(Source->head == NULL){
+	if(SourceHead_validation(Source) == -1){
 		printf("There nothing in the head of queue \n");
 		return 0;
 	}
@@ -92,7 +101,7 @@ int peek(queue *Source){
 // TODO: Empty function for remove all elements in the data struct.
 void remove_all_elements(queue *Source){
 
-	if(Source->head == NULL){
+	if(SourceHead_validation(Source) == -1){
 		printf("List already empty");
 		return;
 	}
@@ -110,7 +119,7 @@ void remove_all_elements(queue *Source){
 //TODO: print all elements in the queue list.
 void print_queue(queue *Source){
 	
-	if (Source->head == NULL){
+	if (SourceHead_validation(Source) == -1){
 		printf("List empty");
 		return;
 	}
@@ -122,7 +131,7 @@ void print_queue(queue *Source){
 		} while (Source->aux_temporary != NULL);
 	}
 	puts("");
-	printf("The Queue Size: %d", Source->queue_size);
+	printf("The Queue Size: %d \n", Source->queue_size);
 }
 
 
@@ -134,6 +143,7 @@ int main(int argc, char *argv[])
 	enqueue(12, Fila);
 	enqueue(12, Fila);
 	print_queue(Fila);
+	remove_all_elements(Fila);
 
 
 	peek(Fila);
