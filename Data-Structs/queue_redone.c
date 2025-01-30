@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
 // A queue is a linear data structure that follows the First In First Out (FIFO) 
 // order of insertion and deletion. It means that the element that is inserted 
 // first will be the first one to be removed and the element that is 
 // inserted last will be removed at last.
 
-#define MAX_SIZE = 20;
 
 typedef struct Node{
 	int value;
@@ -77,14 +77,28 @@ int dequeue(queue *Source){
 	}
 	
 }
-// TODO: Peek: returns the frontelement of the queue.
+// TODO: Peek: returns the front element of the queue.
 int peek(queue *Source){
 	return 0;
 }
 // TODO: Empty function for remove all elements in the data struct.
 void remove_all_elements(queue *Source){
 
+	if(Source->head == NULL){
+		printf("List already empty");
+		return;
+	}
+
+	do {
+		Source->aux_temporary = Source->head;
+		
+		printf("remove element: %d <-- ", Source->aux_temporary->value);
+		Source->head = Source-> head-> prox_node;
+		free(Source->aux_temporary);
+	} while (Source->head != NULL);
+	puts("");
 }
+
 //TODO: print all elements in the queue list.
 void print_queue(queue *Source){
 	
@@ -99,6 +113,7 @@ void print_queue(queue *Source){
 			Source->aux_temporary = Source-> aux_temporary-> prox_node;
 		} while (Source->aux_temporary != NULL);
 	}
+	puts("");
 }
 
 
@@ -109,6 +124,7 @@ int main(int argc, char *argv[])
 	enqueue(11, Fila);
 	enqueue(12, Fila);
 	enqueue(12, Fila);
-	dequeue(Fila);
 	print_queue(Fila);
+
+	remove_all_elements(Fila);
 }
