@@ -154,7 +154,7 @@ bool search_binaryTree(node *Initial_list){
 		
 		int search_number;
 		printf("Digite o numero a ser consultado: ");
-		scanf("%i \n", search_number);
+		scanf("%i \n", &search_number);
 
 		// Create bool for validation, and a copy node.
 		bool number_notfound = false;
